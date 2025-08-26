@@ -1,0 +1,7 @@
+/* 페이지네이션 */
+.pagination { margin: 18px 0 8px; }
+.page-btn, .page-num {
+  padding: 8px 12px; border: 1px solid #ddd; background: #fff; border-radius: 8px; cursor: pointer;
+}
+.page-num.is-active { border-color: #0b66ff; color: #0b66ff; font-weight: 600; }
+.page-btn:disabled { opacity: .5; cursor: default; }

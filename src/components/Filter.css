@@ -1,0 +1,5 @@
+/* 필터바 */
+.filter { display: flex; gap: 8px; align-items: center; margin: 8px 0 6px; }
+.filter__input, .filter__select {
+  height: 40px; /* 높이 통일 */
+}

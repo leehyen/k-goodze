@@ -1,0 +1,137 @@
+/* ===== 공통 베이스 (모바일 우선) ===== */
+.write-page {
+  /* 섹션 내부 패딩은 공용(App.css) 그대로 사용 */
+}
+
+/* 2단 레이아웃 컨테이너 */
+.write-grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* 카드 패널 */
+.write-panel {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.04);
+  padding: 18px 16px;
+}
+
+/* 폼 기본 */
+.write-form {
+  display: grid;
+  gap: 12px;
+}
+
+/* 라벨 블록 */
+.write-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* 입력 공통 */
+.write-form input,
+.write-form textarea,
+.write-form select {
+  width: 100%;
+  min-width: 0;              /* grid 안에서 줄바꿈/눌림 방지 */
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+}
+
+/* 도움말/카운터 */
+.write-help {
+  color: #8a8a8a;
+  font-size: 12px;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.write-help.is-error { color: #c93434; }
+
+/* 액션바 */
+.write-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* 우측 패널(미리보기/가이드) */
+.write-aside {
+  position: sticky;
+  top: 88px;                 /* 헤더 높이에 맞춰 조정 */
+}
+
+/* 넓게 쓰고 싶은 줄(본문 등) */
+.field-wide {}
+
+/* 체크박스 한 줄 */
+.inline-row { display: flex; align-items: center; gap: 8px; }
+
+/* ===== 데스크톱 레이아웃 ===== */
+@media (min-width: 992px) {
+  /* 좌: 폼(가변), 우: 보조패널(안정폭) — 컨테이너 1200px 내에서 안전 */
+  .write-grid {
+    grid-template-columns: minmax(620px, 1fr) clamp(320px, 28vw, 420px);
+    column-gap: 20px;
+    align-items: start;
+    min-width: 0;
+  }
+
+  /* 라벨/필드 2열: 라벨 고정폭, 필드 가변 */
+  .write-form.write-desktop-2col label {
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+    gap: 8px 12px;
+    min-width: 0;
+  }
+  .write-form.write-desktop-2col label > input,
+  .write-form.write-desktop-2col label > textarea,
+  .write-form.write-desktop-2col label > .write-help,
+  .write-form.write-desktop-2col label > .note {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  /* 넓게 쓰는 줄은 전체 열 차지 */
+  .write-form.write-desktop-2col .field-wide {
+    grid-column: 1 / -1;
+  }
+
+  /* 텍스트 영역 기본 높이(PC 가독성) */
+  .write-form textarea { min-height: 260px; line-height: 1.6; }
+}
+
+/* ===== 페이지별 미세 조정 ===== */
+
+/* 공지 작성 페이지 (notice-page) — 라벨 조금 더 여유 */
+@media (min-width: 992px) {
+  .notice-page .write-form.write-desktop-2col label {
+    grid-template-columns: 170px 1fr;
+  }
+}
+
+/* Q&A 작성 페이지 (qna-page) — 라벨 폭은 살짝 줄이고 비밀글 줄 정돈 */
+@media (min-width: 992px) {
+  .qna-page .write-form.write-desktop-2col label {
+    grid-template-columns: 150px 1fr;
+  }
+  .qna-page .write-form input[type="checkbox"] {
+  margin-right: 6px;
+  transform: translateY(1px); /* 텍스트와 살짝 맞춤 */
+}
+}
+
+/* 초대형 화면 소폭 확장(옵션) */
+@media (min-width: 1280px) {
+  .write-grid {
+    grid-template-columns: minmax(680px, 1fr) clamp(320px, 26vw, 440px);
+  }
+}

@@ -1,0 +1,22 @@
+/* ===== Boards (공지/Q&A 공용) ===== */
+.section { padding:24px 0; }
+.section__head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.section__title { margin:0; }
+
+.board { display:grid; gap:10px; margin-top:12px; }
+.board__head, .board__row {
+  display:grid; grid-template-columns: 1fr 120px 110px; gap:12px; align-items:center;
+  padding:12px 14px; border:1px solid #eee; border-radius:12px; background:#fff;
+}
+.board__head { font-size:13px; color:#666; background:#f9fafb; border-style:dashed; }
+.board__row { transition: box-shadow .15s ease, transform .02s ease; }
+.board__row:hover { box-shadow:0 6px 18px rgba(0,0,0,.06); transform:translateY(-1px); }
+.board__title { min-width:0; display:flex; align-items:center; gap:8px; font-weight:600; }
+.board__title a { color:#111; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.board__title a:hover { color:#0b66ff; }
+.board__meta { color:#777; font-size:13px; text-align:right; }
+
+.badge { display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:999px; font-size:12px; border:1px solid transparent; white-space:nowrap; }
+.badge--notice { background:#eef5ff; color:#0b66ff; border-color:#dce9ff; }
+.badge--lock { background:#fff4e5; color:#9a5b00; border-color:#ffe4bf; }
+.badge--new { background:#eafff3; color:#0b8a45; border-color:#ccf5de; }
