@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./main.css";
+import { getAsset } from "../utils/assets";
+import banner1 from "../assets/banner1.png";
+import banner2 from "../assets/banner2.png";
+import banner3 from "../assets/banner3.png";
 
 const FALLBACK = "https://placehold.co/1200x800?text=Korean+Goods";
 
 const slides = [
-  {title: "한국의 전통을 감각으로 입다",desc: "한복·노리개·전통 문양에서 영감 받은 굿즈",img: "../assets/hero-hanbok-accessory.jpg"},
-  {title: "손끝에서 피어나는 공예의 깊이",desc: "도자기·나전·전통 소품을 담은 디자인",img: "../assets/hero-ceramic-pattern.jpg"},
-  {title: "현대적 감성과 전통의 조화",desc: "감각적으로 재해석된 한국의 문양과 디자인",img: "../assets/hero-modern-pattern.jpg"},
+  {title: "한국의 전통을 감각으로 입다",desc: "한복·노리개·전통 문양에서 영감 받은 굿즈",img: banner1},
+  {title: "손끝에서 피어나는 공예의 깊이",desc: "도자기·나전·전통 소품을 담은 디자인",img: banner2},
+  {title: "현대적 감성과 전통의 조화",desc: "감각적으로 재해석된 한국의 문양과 디자인",img: banner3},
 ];
 
 const categories = [
-  { slug: "hanbok-accessory", name: "한복 액세서리", img: "../assets/cat-hanbok.png" },
-  { slug: "ceramic-craft",    name: "도자/공예",     img: "../assets/cat-ceramic.jpg" },
-  { slug: "pattern-poster",   name: "전통문양/포스터", img: "../assets/cat-pattern.jpg" },
-  { slug: "stationery-book",  name: "문구/서적",     img: "../assets/cat-stationery.jpg" },
+  { slug: "hanbok-accessory", name: "한복 액세서리", img: "banner1.png" },
+  { slug: "ceramic-craft",    name: "도자/공예",     img: "banner1.png" },
+  { slug: "pattern-poster",   name: "전통문양/포스터", img: "banner1.png" },
+  { slug: "stationery-book",  name: "문구/서적",     img: "banner1.png" },
 ];
 
 const bestItems = [
-  { id: 1, title: "봉황 문양 에나멜 키링", price: 12000, img: "../assets/best-keyring.jpg" },
-  { id: 2, title: "백자 머그 (청화)",     price: 18000, img: "../assets/best-mug.jpg" },
-  { id: 3, title: "민화 포스터 A3",       price: 9000,  img: "../assets/best-poster.jpg" },
-  { id: 4, title: "한지 노트 세트",       price: 8500,  img: "../assets/best-notebook.jpg" },
-  { id: 5, title: "노리개 참 장식",       price: 14000, img: "../assets/best-norigae.jpg" },
-  { id: 6, title: "단청 패턴 에코백",     price: 22000, img: "../assets/best-bag.jpg" },
+  { id: 1, title: "봉황 문양 에나멜 키링", price: 12000, img: "cushion.png" },
+  { id: 2, title: "백자 머그 (청화)",     price: 18000, img: "ecobag.png" },
+  { id: 3, title: "민화 포스터 A3",       price: 9000,  img: "fan.png" },
+  { id: 4, title: "한지 노트 세트",       price: 8500,  img: "folding fan.png" },
+  { id: 5, title: "노리개 참 장식",       price: 14000, img: "keyring.png" },
+  { id: 6, title: "단청 패턴 에코백",     price: 22000, img: "light.png" },
 ];
 
 function useSafeBg(url) {
@@ -80,7 +84,7 @@ export default function Main() {
           {categories.map(c => (
             <article key={c.slug} className="card">
               <div className="card__thumb">
-                <img src={c.img} alt={c.name} loading="lazy" onError={(e)=>e.currentTarget.src=FALLBACK} />
+                <img src={getAsset(c.img)} alt={c.name} loading="lazy" onError={(e)=>e.currentTarget.src=FALLBACK} />
               </div>
               <div className="card__body">
                 <h4 className="card__title">{c.name}</h4>
@@ -98,7 +102,7 @@ export default function Main() {
           {bestItems.map(p => (
             <article key={p.id} className="product">
               <div className="product__thumb">
-                <img src={p.img} alt={p.title} loading="lazy" onError={(e)=>e.currentTarget.src=FALLBACK} />
+                <img src={getAsset(p.img)} alt={p.title} loading="lazy" onError={(e)=>e.currentTarget.src=FALLBACK} />
                 <span className="badge badge--new">BEST</span>
               </div>
               <h4 className="product__title">{p.title}</h4>
